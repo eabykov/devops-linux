@@ -30,7 +30,19 @@
 3. Перемести файлы `config` и `binary` в директорию `app`
 4. Создай файл `config.overwrite` в директории `app`
 5. Создай в директории `app` подпапки `temp/info/users` одной командой
-6. Вернись в самое начало и удали директорию `app`
+6. Вернись на уровень выше и удали директорию `app`
+
+<details>
+  <summary>Решение второго задания</summary>
+
+  1. `touch config binary`, `touch ./config ./binary`, `touch config` вместе с `touch binary`
+  2. `mkdir app` или `mkdir ./app`
+  3. `mv config app/` вместе с `mv binary app/` и проверить что это так с помощью `ls -lah`
+  4. `cd app` и `touch config.overwrite`
+  5. `mkdir -p temp/info/users`
+  6. `cd ..` и `rm -rfv app`
+
+</details>
 
 ### Третье задание
 
