@@ -117,3 +117,10 @@
 2. Записать отсортированный список имен в файл `names_sorted.txt`
 3. Дописать в конец файла `names_sorted.txt` имена с файла `names_new.txt`
 4. 
+
+<details>
+  <summary>Решение седьмого задания</summary>
+
+  1. 
+
+</details>
