@@ -141,7 +141,13 @@ cd ~ && pwd
 <details>
   <summary>Решение седьмого задания</summary>
 
-1. 
+1. `sort | uniq`
+   - `sort` сортируем в алфавитном порядке
+   - `uniq` склеивает повторяющиеся строки в одну
+2. `sort | uniq > names_sorted.txt`
+   - `>` перезаписывает содержимое файла `names_sorted.txt` выводом команды `uniq`
+3. `cat names_new.txt >> names_sorted.txt`
+   - `>>` дописывает в конец файла `names_sorted.txt` вывод команды cat (содержимое файла `names_new.txt`)
 
 </details>
 
