@@ -159,7 +159,11 @@ cd ~ && pwd
 <details>
   <summary>Решение восьмого задания</summary>
 
-1. 
+1. `grep -i 'Aider' /etc/*`
+   - `/etc/*` поиск по всем файлам в папке `/etc`
+   - `-i` означает не учитывать регистр (найдет: aider, Aider, AIDER, aIDEr, и тд)
+2. `grep -i 'Aider' /etc/* 2>/dev/null`
+   - `2>/dev/null` не выводить ошибки
 
 </details>
 
