@@ -256,9 +256,9 @@ cd ~ && pwd
    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    
    # обновляем список программ из репозиториев (обновит список програм которые можно ставить и из нового репозитория docker)
-   sudo apt-get update
+   sudo apt update
    # устанавливаем последнюю версию docker вместе с утилитами которые он использует
-   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    
    # добавляем нашего пользователя в группу docker для того чтобы команды docker работали без sudo
    sudo usermod -aG docker $USER
