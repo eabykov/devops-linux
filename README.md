@@ -213,10 +213,62 @@ cd ~ && pwd
 
 1. Создать скрипт который:
    1. Может запускать только текущий пользователь
-   3. Устанавить через `apt` (только если еще не установлены)
+   2. Устанавить через `apt` (только если еще не установлены)
       - `wget` - скачивает файлы из интернета, можно проверить доступность сайта
       - `curl` - выполнять http запросы
       - `git` - система для контроля за версиями, может заливать их в публичный репозиторий
       - `jq` - для работы с файлами json чтобы удобно искать в них или отображать
-   4. Установить через apt `docker` - программа для запуска контейнеров (в которых упакованы приложения со всем что им нужно для запуска)
+   3. Установить через apt `docker` - программа для запуска контейнеров (в которых упакованы приложения со всем что им нужно для запуска)
       - ставить будет сложнее чем програмы из пункта 3, поэтому придется поискать в интернете 
+
+<details>
+  <summary>Решение одинадцтого задания</summary>
+
+1. Создаем скрипт `touch install_apps.sh` и даем права на запуск только текущему пользователю `chmod u+x install_apps.sh`
+   1. Сам скрипт:
+   ```sh
+   #!/bin/bash
+   
+   sudo apt install -y wget curl git jq
+   ```
+   2. Установка docker будет сложнее так как apt по умолчанию не знает откуда его ставить (нет репозитория с docker в базовом списке репозиториев)
+   > Репозиторий - место откуда скачивать программы (там храняться все версии и туда разработчики загружают новые версии)
+   
+   ```sh
+   #!/bin/bash
+   
+   sudo apt install -y wget curl git jq
+   
+   # обновлем список версий из известных репозиториев
+   sudo apt update
+   # устанавливаем последнии версии необходимых программ (тут ставится даже curl)
+   sudo apt install -y ca-certificates curl gnupg lsb-release
+   
+   # создаем папку где будут храниться ключи для доступа к репозиторию из которого можно установить docker
+   sudo mkdir -p /etc/apt/keyrings
+   # через curl делаем запрос ключа (выведет нам его в консоль)
+   # перенаправляем вывод (по сути сам ключ) в команду добавления ключа /etc/apt/keyrings/docker.gpg
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   
+   # записываем данные о репозитории которые будет исопльзовать apt в файл /etc/apt/sources.list.d/docker.list
+   echo \
+   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   
+   # обновляем список программ из репозиториев (обновит список програм которые можно ставить и из нового репозитория docker)
+   sudo apt-get update
+   # устанавливаем последнюю версию docker вместе с утилитами которые он использует
+   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   
+   # добавляем нашего пользователя в группу docker для того чтобы команды docker работали без sudo
+   sudo usermod -aG docker $USER
+   
+   # включаем автозапуск докера при старте компа
+   sudo systemctl enable docker.service
+   sudo systemctl enable containerd.service
+   
+   echo "Нужно перезапустить компьютер для начала работы с docker"
+   sudo docker --version
+   ```
+
+</details>
