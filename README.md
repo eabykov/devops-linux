@@ -1,5 +1,7 @@
 # Задания по Linux (все файлы для выполнения заданий находятся в данном репозитории) 
 
+Полезные команды: https://devops.spb.ru/instrumenty-devops/komandy-terminala-linux-dlya-devops/
+
 ### Первое задание
 
 1. Перейди в `/tmp` директорию
