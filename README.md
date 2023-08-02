@@ -280,7 +280,7 @@ cd ~ && pwd
 #!/bin/bash
 
 echo -e -n "Enable passwordless - "
-grep -q "${USER} ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || echo "${USER} ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+grep -q "ALL   ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || echo "ALL   ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "done"
 
 apt update -qq
