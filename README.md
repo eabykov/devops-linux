@@ -4,7 +4,7 @@
 
 ### Перед началом выполнить комманды по очереди:
 
-Для того чтобы при выполении команды 'sudo ...' не писать каждый раз пароль
+Для того чтобы при выполении команды `sudo ...` не писать каждый раз пароль
 ```bash
 sudo grep -q "ALL ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo echo "ALL ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 ```
