@@ -285,5 +285,6 @@ echo "done"
 
 apt update -qq
 apt upgrade -y -qq
-apt install -y -qq ncdu ripgrep fzf lnav jq nano
+apt install -y -qq ncdu htop tldr ripgrep fzf lnav jq nano
+tldr --update
 ```
