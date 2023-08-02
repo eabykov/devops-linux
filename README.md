@@ -285,8 +285,7 @@ echo "done"
 
 sudo apt update -qq
 sudo apt upgrade -y -qq
-sudo apt install -y -qq ncdu ripgrep lnav jq nano wget curl exa
-grep -q 'exa' ${HOME}/.bash_aliases || echo -e "alias ll='exa -alF'\nalias ls='exa'" >> ${HOME}/.bash_aliases
+sudo apt install -y -qq ncdu ripgrep lnav jq nano wget curl
 grep -q 'rg' ${HOME}/.bash_aliases || echo -e "alias grep='rg'" >> ${HOME}/.bash_aliases
 grep -q 'ncdu' ${HOME}/.bash_aliases || echo -e "alias du='ncdu'" >> ${HOME}/.bash_aliases
 grep -q 'lnav' ${HOME}/.bash_aliases || echo -e "alias less='lnav'" >> ${HOME}/.bash_aliases
