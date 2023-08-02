@@ -280,10 +280,14 @@ cd ~ && pwd
 #!/bin/bash
 
 echo -e -n "Enable passwordless - "
-grep -q "ALL   ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || echo "ALL   ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo grep -q "ALL   ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo echo "ALL   ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "done"
 
-apt update -qq
-apt upgrade -y -qq
-apt install -y -qq ncdu ripgrep fzf lnav jq nano wget curl
+sudo apt update -qq
+sudo apt upgrade -y -qq
+sudo apt install -y -qq ncdu ripgrep lnav jq nano wget curl exa
+grep -q 'exa' ${HOME}/.bash_aliases || echo -e "alias ll='exa -alF'\nalias ls='exa'" >> ${HOME}/.bash_aliases
+grep -q 'rg' ${HOME}/.bash_aliases || echo -e "alias grep='rg'" >> ${HOME}/.bash_aliases
+grep -q 'ncdu' ${HOME}/.bash_aliases || echo -e "alias du='ncdu'" >> ${HOME}/.bash_aliases
+grep -q 'lnav' ${HOME}/.bash_aliases || echo -e "alias less='lnav'" >> ${HOME}/.bash_aliases
 ```
