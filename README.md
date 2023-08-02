@@ -4,26 +4,29 @@
 
 ### Перед началом выполнить комманды по очереди:
 
+Для того чтобы при выполении команды 'sudo ...' не писать каждый раз пароль
 ```bash
-# Для того чтобы при выполении команды 'sudo ...' не писать каждый раз пароль
-sudo grep -q "ALL   ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo echo "ALL   ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo grep -q "ALL ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo echo "ALL ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+```
 
-# Обновим список версий установленных пакетов
-sudo apt update -qq
-# Установим обновления для установленных пакетов
-sudo apt upgrade -y -qq
+Обновим список версий установленных пакетов и установим для них обновления
+```bash
+sudo apt update -qq && sudo apt upgrade -y -qq
+```
 
-# Установим несколько полезных программ
-# ncdu - более удобный аналог du
-# ripgrep - более быстрый и удобный аналог grep
-# lnav - более удобный аналог less который подсветит синтаксис
-# jq - для работы с json файлами (например поиска в файле имен)
-# nano - текстовый редактор, вместо vi или vim
-# wget - поможет скачать что-либо из интернета
-# curl - с его помощью можно делать HTTP запросы прямо из консоли, например curl google.com
+Установим несколько полезных программ
+- ncdu - более удобный аналог du
+- ripgrep - более быстрый и удобный аналог grep
+- lnav - более удобный аналог less
+- jq - для работы с json файлами (например поиска в файле имен)
+- nano - текстовый редактор, вместо vi или vim
+- wget - поможет скачать что-либо из интернета
+- curl - с его помощью можно делать HTTP запросы прямо из консоли, например `curl google.com`
+```bash
 sudo apt install -y -qq ncdu ripgrep lnav jq nano wget curl
-
-# Заменим стандарные утилиты на более удобные (погугли 'alias bash')
+```
+Заменим стандарные утилиты на более удобные (погугли 'alias bash')
+```bash
 grep -q 'rg' ${HOME}/.bash_aliases || echo -e "alias grep='rg'" >> ${HOME}/.bash_aliases
 grep -q 'ncdu' ${HOME}/.bash_aliases || echo -e "alias du='ncdu'" >> ${HOME}/.bash_aliases
 grep -q 'lnav' ${HOME}/.bash_aliases || echo -e "alias less='lnav'" >> ${HOME}/.bash_aliases
