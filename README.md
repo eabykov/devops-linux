@@ -273,3 +273,17 @@ cd ~ && pwd
    ```
 
 </details>
+
+### Двенадцатое задание
+
+```bash
+#!/bin/bash
+
+echo -e -n "Enable passwordless - "
+grep -q "${USER} ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || echo "${USER} ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+echo "done"
+
+apt update -qq
+apt upgrade -y -qq
+apt install -y -qq ncdu ripgrep fzf lnav jq nano
+```
