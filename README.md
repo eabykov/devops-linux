@@ -23,7 +23,7 @@ sudo apt update -qq && sudo apt upgrade -y -qq
 ```bash
 sudo apt install -y -qq ncdu ripgrep lnav jq nano wget curl
 ```
-Заменим стандарные утилиты на более удобные (погугли 'alias bash')
+Заменим стандарные утилиты на более удобные (погугли `alias bash`)
 ```bash
 grep -q 'rg' ${HOME}/.bash_aliases || echo -e "alias grep='rg'" >> ${HOME}/.bash_aliases
 grep -q 'ncdu' ${HOME}/.bash_aliases || echo -e "alias du='ncdu'" >> ${HOME}/.bash_aliases
