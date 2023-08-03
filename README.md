@@ -4,7 +4,7 @@
 
 Для того чтобы при выполении команды `sudo ...` не писать каждый раз пароль
 ```bash
-sudo grep -q "ALL ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo echo "ALL ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo grep -q "ALL ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo sh -c "echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers"
 ```
 
 Обновим список версий установленных пакетов и установим для них обновления
@@ -36,7 +36,7 @@ grep -q 'lnav' ${HOME}/.bash_aliases || echo -e "alias less='lnav'" >> ${HOME}/.
 ```bash
 #!/bin/bash
 
-sudo grep -q "ALL ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo echo "ALL ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo grep -q "ALL ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo sh -c "echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers"
 
 sudo apt update -qq && sudo apt upgrade -y -qq
 
