@@ -1,7 +1,5 @@
 # Задания по Linux (все файлы для выполнения заданий находятся в данном репозитории) 
 
-Полезные команды: https://devops.spb.ru/instrumenty-devops/komandy-terminala-linux-dlya-devops/
-
 ### Перед началом выполнить комманды по очереди:
 
 Для того чтобы при выполении команды `sudo ...` не писать каждый раз пароль
@@ -31,6 +29,25 @@ grep -q 'rg' ${HOME}/.bash_aliases || echo -e "alias grep='rg'" >> ${HOME}/.bash
 grep -q 'ncdu' ${HOME}/.bash_aliases || echo -e "alias du='ncdu'" >> ${HOME}/.bash_aliases
 grep -q 'lnav' ${HOME}/.bash_aliases || echo -e "alias less='lnav'" >> ${HOME}/.bash_aliases
 ```
+
+<details>
+  <summary>Все действия выше одним скриптом</summary>
+
+```bash
+#!/bin/bash
+
+sudo grep -q "ALL ALL = (ALL) NOPASSWD: ALL" /etc/sudoers >/dev/null || sudo echo "ALL ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+sudo apt update -qq && sudo apt upgrade -y -qq
+
+sudo apt install -y -qq ncdu ripgrep lnav jq nano wget curl
+
+grep -q 'rg' ${HOME}/.bash_aliases || echo -e "alias grep='rg'" >> ${HOME}/.bash_aliases
+grep -q 'ncdu' ${HOME}/.bash_aliases || echo -e "alias du='ncdu'" >> ${HOME}/.bash_aliases
+grep -q 'lnav' ${HOME}/.bash_aliases || echo -e "alias less='lnav'" >> ${HOME}/.bash_aliases
+```
+
+</details>
 
 ### Первое задание
 
